@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; //Static meaning that it refers to only this instance 
     public bool isGameOver = false;
     public List<GameObject> characterList;
-    public GameObject playerOne;
+    public GameObject playerOne; //So playerOne is the actual character in the scene that moves up and down
     public GameObject playerTwo;
 
-    public GameObject playerOneCharacter;
+    public GameObject playerOneCharacter; //Copy of a character that can move up and down (basically what players select in the first scene)
     public GameObject playerTwoCharacter;
     float initPosX = 5.5f;//initial posiition
 
@@ -51,10 +51,10 @@ public class GameManager : MonoBehaviour
     void InitPlayers(){
         playerOne = GameObject.Instantiate(playerOneCharacter, new Vector3(-initPosX, 0, 0), Quaternion.identity);
         playerTwo = GameObject.Instantiate(playerTwoCharacter, new Vector3(initPosX, 0, 0), Quaternion.identity);
-        playerTwo.GetComponent<SpriteRenderer>().flipX = true;
+        playerTwo.GetComponent<SpriteRenderer>().flipX = true; //make sure player 2 is facing the corect way 
     }
 
-    public void UpdateScore(bool goalSide, int scoreAmount){
+    public void UpdateScore(bool goalSide, int scoreAmount){ 
         if(!isGameOver){//if gameover is false
             if(goalSide == true){
                 GameData.PlayerOneScore += scoreAmount;
