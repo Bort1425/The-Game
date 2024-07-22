@@ -33,10 +33,20 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartMatch();
-        InitializeMatch();
+        SceneManager.sceneLoaded += OnSceneLoaded; //when the scene loads we check this function...and "OnSceneLoaded" is a reference to the method
+        
+               //StartMatch();
     }
 
+    void OnSceneLoaded(Scene theSceneInQuestion, LoadSceneMode loadSceneModeInQuestion){
+
+        Scene currentScene = SceneManager.GetActiveScene();//gets the scene that's loaded and stores it in the current scene
+        string sceneName = currentScene.name;//sets the current scene's name to "Start" b/c we are in the start scene
+        Debug.Log(sceneName);
+        if(sceneName == "Game"){ 
+            InitializeMatch();  
+        }
+    }
     void InitializeMatch(){
         isGameOver = false;
         GameData.PlayerOneScore = 0;

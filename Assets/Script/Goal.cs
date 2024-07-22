@@ -6,8 +6,7 @@ using TMPro;
 public class Goal : MonoBehaviour
 {
     public bool goalSide;//If it's true it's the right side - False is left side
-    public TextMeshProUGUI scoreTextComponent;//
-
+    public TextMeshProUGUI scoreTextComponent;//S
     void Start(){
         scoreTextComponent.text = "0";
     }
