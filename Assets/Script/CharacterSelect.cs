@@ -16,7 +16,7 @@ using UnityEngine;
 public class CharacterSelect : MonoBehaviour
 {
 
-    public List<Sprite> characterList;
+    public List<GameObject> characterList;
     public SpriteRenderer characterSprite;//gives a reference to the sprite renderer that's attached to the character frame
     public int characterLength;
     public int currentCharacter;

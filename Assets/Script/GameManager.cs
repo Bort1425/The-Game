@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,13 +9,21 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; //Static meaning that it refers to only this instance 
     public bool isGameOver = false;
     public List<GameObject> characterList;
+
+    public int playerOneCharacterIndex = 0;
+    public int playerTwoCharacterIndex = 0;
+
+    public SpriteRenderer playerOneSR;
+    public SpriteRenderer playerTwoSR;
+
+    public TextMeshProUGUI playerOneNameText;
+    public TextMeshProUGUI playerTwoNameText;
     public GameObject playerOne; //So playerOne is the actual character in the scene that moves up and down
     public GameObject playerTwo;
 
     public GameObject playerOneCharacter; //Copy of a character that can move up and down (basically what players select in the first scene)
     public GameObject playerTwoCharacter;
     float initPosX = 5.5f;//initial posiition
-
     const int endingScore = 5;
     bool winner;
     float ballRespawnDelay = 0.6f;
@@ -37,6 +46,57 @@ public class GameManager : MonoBehaviour
         
                //StartMatch();
     }
+
+   public void CycleUp(bool playerIdentity){
+        if(playerIdentity == false){//false ---> left player
+        playerOneCharacterIndex--;
+            if(playerOneCharacterIndex == -1){
+                playerOneCharacterIndex = characterList.Count- 1;         
+            }
+        }
+        else{
+            playerTwoCharacterIndex--;
+            if(playerTwoCharacterIndex == -1){
+                playerTwoCharacterIndex = characterList.Count -1;
+            }
+        }
+        UpdateCharacterSelected(playerIdentity);
+    }
+
+    public void CycleDown(bool playerIdentity){
+        if(playerIdentity == false){
+            playerOneCharacterIndex++;
+            if(playerOneCharacterIndex >= characterList.Count){
+                playerOneCharacterIndex = 0;
+                
+            }
+        }
+        else{
+            playerTwoCharacterIndex++;
+            if(playerTwoCharacterIndex >= characterList.Count){
+                playerTwoCharacterIndex = 0;
+            }
+        }
+        UpdateCharacterSelected(playerIdentity);
+    }
+    void UpdateCharacterSelected(bool playerIdentity){
+        if(playerIdentity == false){
+            //change name 
+            playerOneNameText.text = characterList[playerOneCharacterIndex].name;
+            //the sprite
+            playerOneSR.sprite = characterList[playerOneCharacterIndex].GetComponent<SpriteRenderer>().sprite;//change the character in the box to what i want through the sprite renderer
+            //change character selected
+            playerOneCharacter = characterList[playerOneCharacterIndex];
+        }else{
+            //change name 
+            playerTwoNameText.text = characterList[playerTwoCharacterIndex].name;
+            //the sprite
+            playerTwoSR.sprite = characterList[playerTwoCharacterIndex].GetComponent<SpriteRenderer>().sprite;//change the character in the box to what i want through the sprite renderer
+            //change character selected
+            playerTwoCharacter = characterList[playerTwoCharacterIndex];
+        }
+    }
+    
 
     void OnSceneLoaded(Scene theSceneInQuestion, LoadSceneMode loadSceneModeInQuestion){
 
