@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerOneCharacter; //Copy of a character that can move up and down (basically what players select in the first scene)
     public GameObject playerTwoCharacter;
     float initPosX = 5.5f;//initial posiition
-    const int endingScore = 5;
+    const int endingScore = 100;
     bool winner;
     float ballRespawnDelay = 0.6f;
     public GameObject ballPrefab;
