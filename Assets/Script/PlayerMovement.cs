@@ -6,10 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb; //Makes space in mem for object
     public float speed;
+    public string rotateInputAxis;// this IS in fact the "horizontal" 
+    public string verticalInputAxis;
     Vector2 move;
     public float screenBoundary = 4.2f;
     public float rotationSpeed;
     float rotationInput;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move = new Vector2(0f, Input.GetAxis("P1_Vertical") * speed);
-        rotationInput = Input.GetAxis("P1_Rotate");
+        move = new Vector2(0f, Input.GetAxis(verticalInputAxis) * speed);
+        rotationInput = Input.GetAxis(rotateInputAxis);
         if(transform.position.y > screenBoundary){ //to keep the position of the player inside the box
             transform.position = new Vector2(transform.position.x,screenBoundary);
         }else if(transform.position.y <  -screenBoundary){

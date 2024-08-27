@@ -122,6 +122,12 @@ public class GameManager : MonoBehaviour
         playerOne = GameObject.Instantiate(playerOneCharacter, new Vector3(-initPosX, 0, 0), Quaternion.identity);
         playerTwo = GameObject.Instantiate(playerTwoCharacter, new Vector3(initPosX, 0, 0), Quaternion.identity);
         playerTwo.GetComponent<SpriteRenderer>().flipX = true; //make sure player 2 is facing the corect way 
+        
+        playerOne.GetComponent<PlayerMovement>().verticalInputAxis = "P1_Vertical";
+        playerOne.GetComponent<PlayerMovement>().rotateInputAxis = "P1_Rotate";
+
+        playerTwo.GetComponent<PlayerMovement>().verticalInputAxis = "P2_Vertical";
+        playerTwo.GetComponent<PlayerMovement>().rotateInputAxis = "P2_Rotate";
     }
 
     public void UpdateScore(bool goalSide, int scoreAmount){ 
