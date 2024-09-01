@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; //Static meaning that it refers to only this instance 
     public bool isGameOver = false;
     public List<GameObject> characterList;
+    public bool inputLockOne;
+    public bool inputLockTwo;
 
     public int playerOneCharacterIndex = 0;
     public int playerTwoCharacterIndex = 0;
@@ -111,14 +113,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     public void CycleCharacters(){
-        if(Input.GetAxisRaw("P1_Vertical") > 0){
-            CycleUp(false);
-        }else if(Input.GetAxisRaw("P1_Vertical") < 0){
-            CycleDown(false);
-        }else if(Input.GetAxisRaw("P2_Vertical") > 0) {
+        Debug.Log(Input.GetAxis("P1_Vertical"));
+        Debug.Log(Input.GetAxis("P2_Vertical"));
+        if(Input.GetAxis("P1_Vertical") > 0){
+            if(inputLockOne == false){ //So if the lock is false (not locked) you can cycle
+                CycleUp(false);
+                inputLockOne = true;
+            }
+            
+        }if(Input.GetAxis("P1_Vertical") < 0){
+            if(inputLockOne == false){    
+                CycleDown(false);
+                inputLockOne = true;
+            }
+            
+            
+        }if(Input.GetAxisRaw("P2_Vertical") > 0) {
+            if(inputLockTwo == false){
+
+            }
             CycleUp(true);
-        }else if(Input.GetAxisRaw("P2_Vertical") < 0){
+        }if(Input.GetAxisRaw("P2_Vertical") < 0){
             CycleDown(true);
         }
         //if the player one presses up on the stick cycle one on the player one side //otherwise cycle down
