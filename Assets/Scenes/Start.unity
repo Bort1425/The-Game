@@ -1000,6 +1000,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2737063939067136057, guid: 135b738e292b1db44b896172da137fdb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3146947413309377418, guid: 135b738e292b1db44b896172da137fdb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.66
@@ -1079,6 +1083,10 @@ PrefabInstance:
     - target: {fileID: 6507133339921777656, guid: 135b738e292b1db44b896172da137fdb, type: 3}
       propertyPath: m_Name
       value: Character Frame (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287682861334553588, guid: 135b738e292b1db44b896172da137fdb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7363024602165406511, guid: 135b738e292b1db44b896172da137fdb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1195,7 +1203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1510773726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1424,6 +1432,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2737063939067136057, guid: 135b738e292b1db44b896172da137fdb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3146947413309377418, guid: 135b738e292b1db44b896172da137fdb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.48

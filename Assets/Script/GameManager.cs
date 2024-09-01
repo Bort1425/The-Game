@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
         
                //StartMatch();
     }
+    void Update(){//do thing every frame
+        CycleCharacters();
+    }
 
    public void CycleUp(bool playerIdentity){
         if(playerIdentity == false){//false ---> left player
@@ -80,6 +83,7 @@ public class GameManager : MonoBehaviour
         UpdateCharacterSelected(playerIdentity);
     }
     void UpdateCharacterSelected(bool playerIdentity){
+       
         if(playerIdentity == false){
             //change name 
             playerOneNameText.text = characterList[playerOneCharacterIndex].name;
@@ -97,8 +101,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-
-    void OnSceneLoaded(Scene theSceneInQuestion, LoadSceneMode loadSceneModeInQuestion){
+        void OnSceneLoaded(Scene theSceneInQuestion, LoadSceneMode loadSceneModeInQuestion){
 
         Scene currentScene = SceneManager.GetActiveScene();//gets the scene that's loaded and stores it in the current scene
         string sceneName = currentScene.name;//sets the current scene's name to "Start" b/c we are in the start scene
@@ -107,6 +110,21 @@ public class GameManager : MonoBehaviour
             InitializeMatch();  
         }
     }
+
+    public void CycleCharacters(){
+        if(Input.GetAxisRaw("P1_Vertical") > 0){
+            CycleUp(false);
+        }else if(Input.GetAxisRaw("P1_Vertical") < 0){
+            CycleDown(false);
+        }else if(Input.GetAxisRaw("P2_Vertical") > 0) {
+            CycleUp(true);
+        }else if(Input.GetAxisRaw("P2_Vertical") < 0){
+            CycleDown(true);
+        }
+        //if the player one presses up on the stick cycle one on the player one side //otherwise cycle down
+        //howevea if player 2 pressed up on
+    }
+
     void InitializeMatch(){
         isGameOver = false;
         GameData.PlayerOneScore = 0;
