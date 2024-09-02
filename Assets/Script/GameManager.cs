@@ -131,9 +131,9 @@ public class GameManager : MonoBehaviour
             
             
         }if(Input.GetAxisRaw("P2_Vertical") > 0) {
-            if(inputLockTwo == false){
+           // if(inputLockTwo == false){
 
-            }
+           // }
             CycleUp(true);
         }if(Input.GetAxisRaw("P2_Vertical") < 0){
             CycleDown(true);
