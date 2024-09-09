@@ -7,6 +7,11 @@ public class Ball : MonoBehaviour
 {
     public static Ball instance;
     public float ballSpeed;// ball speed at any given time
+
+    public AudioClip leftSound;//audioclip - cd. an attribute not 
+    public AudioClip rightSound;
+
+    AudioSource audioInQuestion; //AudioSource - cd player
     Rigidbody2D rb;
     Vector2 velocity;
     
@@ -19,6 +24,8 @@ public class Ball : MonoBehaviour
     }
     // Start is called before the first frame update
     void Start(){
+
+        audioInQuestion = GetComponent<AudioSource>();
 
         rb = GetComponent<Rigidbody2D>();
         float startDirectionX = Random.value;
@@ -43,11 +50,20 @@ float startDirectionY = Random.value;
     void OnCollisionEnter2D(Collision2D collision){
         
         Vector2 normal= collision.contacts[0].normal;// Normal is the outward direction of the object we hit
-        //Vector2 direction = rb.velocity;//the direction that the ball is going in
-       
-        //velocity = Vector2.Reflect(direction, normal);//stores the reflection
+        
         Vector2 direction = Vector2.Reflect(velocity.normalized, normal.normalized);
 
         rb.velocity = direction * ballSpeed;
+        //Play sound
+        if(collision.gameObject.CompareTag("Player")){//collision.gameObject.CompareTag - look at the thing i hit, look at its game object then look at the tag it has
+            if(transform.position.x < 0){//transform.position.X - where we are on the x axis on the scr- like literally the balls x coordinate (we are on the left side)
+            audioInQuestion.PlayOneShot(leftSound);
+        }else if(transform.position.x > 0){
+            audioInQuestion.PlayOneShot(rightSound);
+        }
+        }
+        
+
+
     }
 }
